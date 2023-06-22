@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+    background-blend-mode: screen;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+.container .card
+{
+    position: relative;
+    bottom: 7em;
+    width: 600px;
+    height: 500px;
+    margin: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border:1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    overflow-y: visible;
+    scrollbar-color: transparent;
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.container .card .content
+{
+    padding: 20px;
+    transition: 0.5s;
+}
+
+.container .card2
+{
+    position: absolute;
+    bottom: -7em;
+    width: 380px;
+    height: 100px;
+    margin: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border:1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.card2 .content input[type=text] {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 65%;
+    outline: #1e1e1e;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    outline: none;
+    color: white;
+    opacity: 100%;
+}
+
+
+.card2 .content input[type=text]::placeholder {
+    color: white;
+    opacity: 100%;
+}
+
+.card2 .content input[type=text]:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn {
+    position: absolute;
+    bottom: 25px;
+    left: 75%;
+    font-size: 1rem;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 60px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btntrash {
+    position: absolute;
+    bottom: -150px;
+    left: 45%;
+    font-size: 1rem;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 60px;
+}
+
+.btntrash:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container .card .content h2
+{
+    position: absolute;
+    top: 10px;
+    left: 200px;
+    font-size: 5em;
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+}
+
+ul {
+    position: absolute;
+    top: 150px;
+    left: 250px;
+    list-style: none;
+    transform: translateX(-140px);
+}
+  
+li {
+    list-style: none;
+    font-size: 17px;
+    max-height: 150px;
+    position: relative;
+    color: #fff;
+    padding: 12px 0;
+    user-select: none;
+    cursor: pointer;
+}
+
+ul li::before
+{
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    transform: translateX(-140px);
+    background-image: url("../img/unchecked.png");
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 90px;
+}
+
+ul li.checked
+{
+    color:#555;
+    text-decoration: line-through;
+}
+
+li.checked::before
+{
+    background-image: url("../img/checked.png");
+}
+
+ul li span
+{
+    position: absolute;
+    right: 0;
+    left: 430px;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+}
+
+ul li span:hover
+{
+    background: rgba(255, 255, 255, 0.1);
+    color: red;
+    border-radius: 50%;
+}
+/* Path: css/style.css */

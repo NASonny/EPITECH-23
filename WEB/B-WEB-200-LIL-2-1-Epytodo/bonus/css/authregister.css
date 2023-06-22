@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("../bg/wallpaper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+.container .card
+{
+    position: relative;
+    bottom: 0em;
+    width: 500px;
+    height: 600px;
+    margin: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border:1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(70px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.container .card .content
+{
+    padding: 20px;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.container .card2
+{
+    position: absolute;
+    bottom: -7em;
+    width: 380px;
+    height: 100px;
+    margin: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border:1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.container .card .content h2
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+    font-size: 4em;
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+}
+
+.container .card .content .input input.firstname[type="text"]
+{
+    position: absolute;
+    width: 60%;
+    height: 45px;
+    bottom: 50;
+    transform: translateY(-160px);
+    left: 20%;
+    padding: 0 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    outline: none;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .input input.firstname[type="text"]::placeholder
+{
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .input input.lastname[type="text"]
+{
+    position: absolute;
+    width: 60%;
+    height: 45px;
+    bottom: 50;
+    transform: translateY(-105px);
+    left: 20%;
+    padding: 0 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    outline: none;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .input input.lastname[type="text"]::placeholder
+{
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .input input.email[type="email"]
+{
+    position: absolute;
+    width: 60%;
+    height: 45px;
+    bottom: 50;
+    transform: translateY(-50px);
+    left: 20%;
+    padding: 0 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    outline: none;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .input input.email[type="email"]::placeholder
+{
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .input input.password[type="password"]
+{
+    position: absolute;
+    width: 60%;
+    height: 45px;
+    bottom: 50;
+    transform: translateY(5px);
+    left: 20%;
+    padding: 0 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    outline: none;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .input input.password[type="password"]::placeholder
+{
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .input input.confirmpassword[type="password"]
+{
+    position: absolute;
+    width: 60%;
+    height: 45px;
+    bottom: 50;
+    transform: translateY(60px);
+    left: 20%;
+    padding: 0 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    outline: none;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .input input.confirmpassword[type="password"]::placeholder
+{
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.container .card .content .btn button
+{
+    position: absolute;
+    width: 50%;
+    height: 45px;
+    bottom: 100px;
+    left: 25%;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.container .card .content .btn button:hover
+{
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+.container .card .content .btn button a
+{
+    text-decoration: none;
+    color: #fff;
+}
+
+.container .card .content p
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    pointer-events: visible;
+    color: rgba(255, 255, 255, 0.5);
+    transition: 0.5s;
+}
+
+.container .card .content p a
+{
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.container .card .content p a:hover
+{
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: 0.5s;
+}
+/* Path: css/style.css */

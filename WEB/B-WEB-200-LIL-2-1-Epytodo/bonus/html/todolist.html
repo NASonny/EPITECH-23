@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Epytodo</title>
+    <link rel="icon" type="image/x-icon" href="../img/checklisticon.png">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <script src=""></script> PUT THE INDEX.JS of the node.js -->
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="content">
+                <h2>ToDo</h2>
+                <ul id="list-container">
+                </ul>
+            </div>
+        </div>
+        <div class="card2">
+            <div class="content">
+                <input type="text" id="input-box" placeholder="Ajouter une tâche">
+                <button class="btn" onclick="addTask()"><i class="fa-solid fa-plus"></i></button>
+            </div>
+        </div>
+        <button class="btntrash" onclick="deleteAll()"><i class="fa-solid fa-trash"></i></button>
+    </div>
+<script src="../js/todolist.js"></script>
+</body>
+</html>
