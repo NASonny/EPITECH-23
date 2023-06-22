@@ -1,0 +1,214 @@
+ECHO	=	/bin/echo -e
+CD 		=	/bin/cd
+DEFAULT	=	"\e[0m"
+BOLD_T	=	"\e[1m"
+DIM_T	=	"\e[2m"
+UNDLN_T	=	"\e[4m"
+BLACK_C	=	"\e[30m"
+RED_C	=	"\e[31m"
+GREEN_C	=	"\e[32m"
+YELLO_C	=	"\e[33m"
+BLUE_C	=	"\e[34m"
+MAGEN_C	=	"\e[35m"
+CYAN_C	=	"\e[36m"
+WHITE_C	=	"\e[97m"
+DEFAULT_C	=	"\e[39m"
+LIGHT_GREY	=	"\e[37m"
+DARK_GREY	=	"\e[90m"
+LIGHT_RED	=	"\e[91m"
+LIGHT_GREEN	=	"\e[92m"
+LIGHT_YELLO	=	"\e[93m"
+LIGHT_BLUE	=	"\e[94m"
+LIGHT_MAGEN	=	"\e[95m"
+LIGHT_CYAN	=	"\e[96m"
+
+[1]
+NAME="ls"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo 'ls'
+[1-END]
+
+[2]
+NAME="random-tests-1"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo 'ls'
+  echo './test_notchmod.sh'
+  echo 'ls'
+  echo 'exit'
+[2-END]
+
+[3]
+NAME="random-tests-2"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo 'ls'
+  echo './test_chmod.sh'
+  echo 'ls'
+  echo 'exit'
+[3-END]
+
+[4]
+NAME="random-tests-3"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo 'ls'
+  echo './test_notchmodnotshebang.sh'
+  echo 'ls'
+  echo 'exit'
+[4-END]
+
+[5]
+NAME="Nothing"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo ''
+[5-END]
+
+[6]
+NAME="Exec two command"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls /etc'
+  echo 'cat /etc/resolv.conf'
+[6-END]
+
+[7]
+NAME="Testing with /usr/bin PATH"
+SETUP="export TERM=xterm ; PATH='/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'pwd'
+[7-END]
+
+[8]
+NAME="Testing with /bin PATH"
+SETUP="export TERM=xterm ; PATH='/bin'"
+CLEAN=""
+TESTS=
+  echo 'pwd'
+[8-END]
+
+[9]
+NAME="run commands"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'cat /etc/resolv.conf'
+  sleep 0.5
+  echo 'ls -l /etc'
+  sleep 0.5
+  echo 'pwd'
+[9-END]
+
+[10]
+NAME="setenv and unsetenv"
+SETUP="/usr/bin/env > .lstenv ; while read varenv ; do unset $varenv ; done < <(/bin/cat .lstenv | /usr/bin/cut -f1 -d=) ; export PATH=/bin:/usr/bin ; export _=ls ; export LS_COLORS=RID ; export MYBG=4 ; export LVL=4 ; export NOTE=2"
+CLEAN="while read varenv ; do export "$varenv" 2>/dev/null ; done  < <(/bin/cat .lstenv) ; /bin/rm -f .lstenv"
+TESTS=
+  echo 'unsetenv HOSTTYPE'
+  echo 'unsetenv VENDOR'
+  echo 'unsetenv OSTYPE'
+  echo 'unsetenv MACHTYPE'
+  echo 'unsetenv SHLVL'
+  echo 'unsetenv PWD'
+  echo 'unsetenv LOGNAME'
+  echo 'unsetenv USER'
+  echo 'unsetenv GROUP'
+  echo 'unsetenv HOST'
+  echo 'unsetenv REMOTEHOST'
+  echo 'unsetenv _'
+  echo 'unsetenv LS_COLORS'
+  echo 'unsetenv NOTE'
+  echo 'setenv titi'
+  echo 'setenv tata coucou'
+  echo 'env'
+  echo '/usr/bin/env'
+  echo 'setenv var1 val1'
+  echo 'setenv var2 val2'
+[10-END]
+
+[11]
+NAME="builtin cd"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'cd ..'
+  echo 'ls -l'
+  echo 'cd /usr'
+  echo 'ls -l'
+[11-END]
+
+[12]
+NAME="many tab and space"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo -e "\t\t    ls\t     \t-l    \t\t  \t -a /usr   \t\t"
+[12-END]
+
+[13]
+NAME="Launch DivZero program with core dump"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "./my_divzero"
+[13-END]
+
+[14]
+NAME="Launch SegFault program with core dump"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "./my_segfault"
+[14-END]
+
+[15]
+NAME="Path start with ../"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo '../bin/ls'
+[15-END]
+
+[16]
+NAME="Path start with /"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo '/ls'
+[16-END]
+
+[17]
+NAME="Wrong architecture binary"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo './mysh_broken'
+[17-END]
+
+[18]
+NAME="Testing simple pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "ls -l /etc | grep sh"
+[18-END]
+
+[19]
+NAME="A pipe with a builtin ?"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'setenv | /bin/grep VAR1'
+  echo '/bin/ls | cd /usr'
+  echo 'ls -l'
+  echo 'exit 45 | cat /etc/resolv.conf'
+[19-END]

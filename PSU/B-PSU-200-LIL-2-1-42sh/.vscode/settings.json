@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "my.h": "c",
+        "random": "c",
+        "my_shell.h": "c"
+    }
+}

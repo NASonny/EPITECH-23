@@ -1,0 +1,7 @@
+42sh
+*.o
+*.~
+*.a
+.42sh_history
+deplacmeent/deplacement.c
+deplacmeent/find_touch.c
