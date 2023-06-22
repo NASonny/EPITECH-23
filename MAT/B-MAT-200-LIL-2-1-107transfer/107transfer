@@ -1,0 +1,73 @@
+#!/usr/bin/python3
+
+##
+## EPITECH PROJECT, 2022
+## 106
+## File description:
+## MATH
+##
+
+import math
+import sys
+from math import *
+from sys import *
+
+#####################################################################################
+##            ##            ##        MAN HELP      ##            ##               ##
+#####################################################################################
+def man_help():
+    print("USAGE")
+    print("    ./107transfer [num den]+\n")
+    print("DESCRIPTION")
+    print("    num    polynomial numerator defined by its coefficients")
+    print("    den    polynomial denominator defined by its coefficients")
+    exit(0)
+
+#####################################################################################
+##            ##            ##        check_string      ##            ##           ##
+#####################################################################################
+
+def     check_string(string):
+    i = 0
+    while (i < len(string)):
+        if (string[i] < '.' and string[i] > '/'
+            and string[i] < '0' or string[i] > '9'):
+            print("Invalid argument")
+            exit(84)
+        i = i + 1
+
+#####################################################################################
+##            ##            ##          MAIN            ##            ##           ##
+#####################################################################################
+
+
+if (len(argv) >= 2 and (len(argv) - 1) % 2 == 0):
+
+    if (argv[1] == "-h"):
+        man_help()
+        exit(0)
+    
+    y = 1
+    x = 0.0
+    resultat = 1.0
+    while (x < 1.001):
+        while(y < (len(argv) - 1)):
+            try:
+                num = [int(s) for s in argv[y].split('*')]
+                denum = [int(s) for s in argv[y + 1].split('*')]
+            except ValueError:
+                stdout.write("Invalid Argument\n")
+                exit(84)
+            resultat = resultat * (sum(num[i] * x ** i for i in range(len(num)))) / sum(denum[i] * x ** i for i in range(len(denum)))
+            a = a + 2
+        if (round(x, 3) == int(x)):
+            print('{} -> {:.5f}'.format(int(x), resultat))
+        else:
+            print('{} -> {:.5f}'.format(round(x, 3), result))
+        x += 0.001
+        a = 1
+        result = 1.0
+else:
+    print("Invalid number of argument")
+    exit(84)
+    

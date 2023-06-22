@@ -1,0 +1,12 @@
+The Kebab-case is a style convention in which text is written without spaces or punctuation, where words are separated by hyphens 
+Under this convention word are separated by one hyphen and (if appicable) their characters are in lowercase 
+Write a program that takes a single string as parameter and displays it in in kebab-case, followed by a newline  
+
+exemple :
+
+
+./kebabcase_formatter "Nau way!"
+output : nau-way
+
+./kebabcase_formatter " Chocolatine2.0?  Or kebab64? " | cat -e
+out put : chocolatines-2-0-or-kebab-64$

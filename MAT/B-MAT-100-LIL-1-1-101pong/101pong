@@ -1,0 +1,75 @@
+#!/bin/python3
+##
+## EPITECH PROJECT, 2022
+## 101pong
+## File description:
+## Math Project
+##
+import math
+import sys
+from math import *
+from sys import *
+
+def usage():
+  print(
+      "-USAGE\n"
+      "  ./101pong x0 y0 z0 x1 y1 z1 n\n\n"
+      "-DESCRIPTION\n"
+      "  x0 ball abscissa at time t - 1\n"
+      "  y0 ball ordinate at time t - 1\n"
+      "  z0 ball altitude at time t - 1\n"
+      "  x1 ball abscissa at time t\n"
+      "  y1 ball ordinate at time t\n"
+      "  z1 ball altitude at time t\n"
+      "  n  time shift (greater than or equal to zero, integer)\n")
+  sys.exit(0)
+
+if (sys.argv[1] == "-h"):
+  usage()
+
+
+if (len(sys.argv) != 8):
+  print("Error, put 7 not 8 argument maximum or minimum")
+  sys.exit(84)
+
+x0 = float(sys.argv[1])
+y0 = float(sys.argv[2])
+z0 = float(sys.argv[3])
+
+x1 = float(sys.argv[4])
+y1 = float(sys.argv[5])
+z1 = float(sys.argv[6])
+
+d = 16
+n = int(sys.argv[7])
+
+velocity_x = x1 - x0
+velocity_y = y1 - y0
+velocity_z = z1 - z0
+
+cord_x = velocity_x * n + x1
+cord_y = velocity_y * n + y1
+cord_z = velocity_z * n + z1
+
+incidence = math.sqrt(
+  pow(velocity_x, 2) + pow(velocity_y, 2) + pow(velocity_z, 2))
+
+
+if (n < 0):
+  print("Error, put n >= 0")
+  sys.exit(84)
+
+if incidence == 0:
+  angle = 0
+else:
+  angle = abs(90 - math.degrees(math.acos(velocity_z / incidence)))
+
+print("The velocity vector of the ball is:")
+print("(%.2f, %.2f, %.2f)" % (velocity_x, velocity_y, velocity_z))
+print("At time t +", n, "ball cordinates will be:")
+print("(%.2f, %.2f, %.2f)" % (cord_x, cord_y, cord_z))
+if (z1 >= 0 and velocity_z < 0) or (z1 < 0 and velocity_z >= 0):
+  print("The incidence angle is:")
+  print("%.2f" % angle, "degrees")
+else:
+  print("The ball won’t reach the paddle.")

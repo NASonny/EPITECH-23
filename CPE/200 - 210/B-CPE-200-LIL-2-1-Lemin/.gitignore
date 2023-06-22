@@ -1,0 +1,8 @@
+lem_in
+*.o
+*.a
+*.~
+*.#
+test
+*.log
+lem_in_bonus

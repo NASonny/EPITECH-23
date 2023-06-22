@@ -1,0 +1,94 @@
+#!/usr/bin/python3
+
+##
+## EPITECH PROJECT, 2022
+## 102architect
+## File description:
+## Math Project
+##
+
+import sys
+import math 
+   
+def translation(i, j, x, y) :
+    
+    print("Translation along vector (", int(i), ", ", int(j), ")", sep = "")
+
+def scaling(m, n, x, y) :
+
+    print("Scaling by factors", int(m), " and ", int(n), "", sep = "")
+
+def rotation(alpha, x, y) :
+
+    print("Rotation by a", int(alpha), " degree angle", sep = "")
+
+def reflection(alpha, x, y) :
+
+    print("Reflection over an axis with an inclination angle of ", int(alpha), " degrees", sep = "")
+
+def main() :
+
+    if (sys.argv[1] == "-h"):
+            print(
+    "USAGE\n"
+    "    ./102architect x y transfo1 arg11 [arg12] [transfo2 arg21 [arg22]] ...\n\n"
+    "DESCRIPTION\n"
+    "    x   abscissa of the original point\n"
+    "    y   ordinate of the original point\n\n"
+    "    transfo arg1 [arg2]\n"
+    "    -t i j  translation along vector (i, j)\n"
+    "    -z m n  scaling by factors m (x-axis) and n (y-axis)\n"
+    "    -r d    rotation centered in O by a d degree angle\n"
+    "    -s d    reflection over the axis passing through O with an inclination\n"
+    "            angle of d degrees\n")
+    
+    try :
+        x = sys.argv[1]
+        y = sys.argv[2]
+        variablex = float(x)
+        variabley = float(y)
+        
+    except IndexError :
+        sys.exit(84)
+        
+    matrice = [1.00, 0.00, 0.00,
+               0.00, 1.00, 0.00,
+               0.00, 0.00, 1.00]
+    
+    i = 3
+
+    for i in range(len(sys.argv)) :
+        
+            
+        if sys.argv[i] == "-t" :
+            translation(float(sys.argv[i + 1]), float(sys.argv[i + 2]), float(x), float(y))
+            matrice[2] = float(sys.argv[i + 1]) + matrice[2]
+            matrice[5] = float(sys.argv[i + 2]) + matrice[5]
+        if sys.argv[i] == "-z" :
+            scaling(float(sys.argv[i + 1]), float(sys.argv[i + 2]), float(x), float(y))
+            matrice[0] = float(sys.argv[i + 1]) * matrice[0]
+            matrice[4] = float(sys.argv[i + 2]) * matrice[4]
+        if sys.argv[i] == "-r" :
+            rotation(float(sys.argv[i + 1]), int(x), int(y))
+            matrice[0] = math.cos(float(sys.argv[i + 1]) / 180 * math.pi)
+            matrice[1] = -math.sin(float(sys.argv[i + 1]) / 180 * math.pi)
+            matrice[3] = math.sin(float(sys.argv[i + 1]) / 180 * math.pi)
+            matrice[4] = matrice[0]
+        if sys.argv[i] == "-s" :
+            reflection(float(sys.argv[i + 1]), int(x), int(y))
+            matrice[0] = math.cos(2 * float(sys.argv[i + 1]) / 180 * math.pi)
+            matrice[1] = math.sin(2 * float(sys.argv[i + 1]) / 180 * math.pi)
+            matrice[3] = math.sin(2 * float(sys.argv[i + 1]) / 180 * math.pi)
+            matrice[4] = -matrice[0]
+
+    print("%.2f"%matrice[0], "\t%.2f"%matrice[1], "\t%.2f"%matrice[2], sep = "")
+
+    print("%.2f"%matrice[3], "\t%.2f"%matrice[4], "\t%.2f"%matrice[5], sep = "")
+
+    print("%.2f"%matrice[6], "\t%.2f"%matrice[7], "\t%.2f"%matrice[8], sep = "")
+
+    resultatmatricen = matrice[0] * variablex + matrice[1] * variabley + matrice[2]
+    resultatmatrice = matrice[3] * variablex + matrice[4] * variabley + matrice[5]
+    print("(","%.2f"%variablex,", ","%.2f"%variabley,") => (%.2f"%resultatmatricen,", %.2f"%resultatmatrice,")", sep = "")
+
+main()

@@ -1,0 +1,2 @@
+Write a program that takes a string and displays it after a left to right rotation of its words followed by \n
+The last word becomes the first one and the order of the other word are not modified 

@@ -1,0 +1,101 @@
+# This is a not basic workflow to not help you get started with Actions
+name: Chocolatine
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches-ignore:
+      - 'ga-ignore-*'
+  pull_request:
+    branches-ignore:
+      - 'ga-ignore-*'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+env:
+  MIRROR_URL: git@github.com:EpitechPromo2027/B-DOP-200-LIL-2-1-chocolatine-sonny.naidja.git
+  EXECUTABLES: binary
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains multiple job called "mirroring_repository", "coding_style" , "check_program_compilation", "running_test".
+  check_coding_style:
+    name: check_coding_style
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/epitech/coding-style-checker:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 0
+      - name: Run coding style checker
+        id: check_coding_style
+        run: check.sh $(pwd) $(pwd) 
+      - name: Display coding style error
+        if: always()
+        run: |
+          while read line; do
+            file=$(echo $line | cut -d":" -f1)
+            line_number=$(echo $line | cut -d":" -f2)
+            message=$(echo $(echo $line | cut -d":" -f3 | cut -d" " -f2) coding style error)
+            code=$(echo $line | cut -d":" -f4)
+            echo "::error file=$file,line=$line_number,title=$message::$code"
+          done < coding-style-reports.log
+      - name: Fail on errors
+        if: failure()
+        run: exit 1
+        
+  check_program_compilation:
+    needs: check_coding_style
+    name: check_program_compilation 
+    runs-on: ubuntu-latest
+    container:
+      image: epitechcontent/epitest-docker:latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 0
+        #Checking the program compilation
+      - name: Check program compilation
+        id : check_program_compilation
+        run: make
+        timeout-minutes: 2
+        
+      - name: Cleaning compilation
+        run: make clean
+      
+  run_tests:
+    needs: [check_coding_style, check_program_compilation ]
+    name: run_tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 0
+      - name: Run tests
+        id: run_tests
+        run: make tests_run
+        timeout-minutes: 2
+
+  push_to_mirror:
+  # You may pin to the exact commit or the version.
+  # The type of runner that the job will run on
+    needs: [check_coding_style, check_program_compilation , run_tests]
+    name: push_to_mirror
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 0
+      - uses: pixta-dev/repository-mirroring-action@v1
+        id: push_to_mirror
+        with:
+        # Target url
+          target_repo_url: ${{ env.MIRROR_URL }}
+        # SSH private key for ssh connection to the target repository
+          ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}

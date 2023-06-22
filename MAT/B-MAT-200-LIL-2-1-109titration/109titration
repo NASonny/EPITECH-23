@@ -1,0 +1,64 @@
+#!/usr/bin/python3
+
+##
+## EPITECH PROJECT, 2022
+## 106
+## File description:
+## MATH
+##
+
+import math
+import sys
+import os
+from math import *
+from sys import *
+from os import *
+
+#####################################################################################
+##            ##            ##        MAN HELP      ##            ##               ##
+#####################################################################################
+def man_help():
+    print("USAGE")
+    print("    ./109titration file\n")
+    print("DESCRIPTION")
+    print("    file   a csv file containing “vol;ph” lines")
+    exit(0)
+
+#####################################################################################
+##            ##            ##        check_string      ##            ##           ##
+#####################################################################################
+
+def     check_string(string):
+    i = 0
+    while (i < len(string)):
+        if (string[i] < '.' and string[i] > '/'
+            and string[i] < '0' or string[i] > '9'):
+            print("Invalid argument")
+            exit(84)
+        i = i + 1
+
+#####################################################################################
+##            ##            ##          MAIN            ##            ##           ##
+#####################################################################################
+
+if (len(argv) == 2):
+    if (argv[1] == "-h"):
+        man_help()
+        exit(0)
+    else:
+        file_path = sys.argv[1]
+    if (not os.path.isfile(file_path)):
+        print(f"Error: {file_path} is not a file.")
+        exit(1)
+    if (os.path.splitext(file_path)[1] != ".csv"):
+        print(f"Error: {file_path} is not a csv file.")
+        exit(1)
+    #else:
+    #   f = open(file_path, "r")
+    #   lines = f.readlines()
+    #    print(lines)
+    #    f.close()
+    #    exit(0) 
+else:
+    print("Invalid number of argument")
+    exit(84)

@@ -1,0 +1,134 @@
+#!/usr/bin/python3
+
+##
+## EPITECH PROJECT, 2022
+## 106
+## File description:
+## MATH
+##
+
+import math
+import sys
+from math import *
+from sys import *
+
+#####################################################################################
+##            ##            ##        MAN HELP      ##            ##               ##
+#####################################################################################
+def man_help():
+    print("USAGE")
+    print("    ./106bombyx n [k | i0 i1]\n")
+    print("DESCRIPTION")
+    print("    n      number of first generation individuals")
+    print("    k      growth rate from 1 to 4")
+    print("    i0     initial generation (included)")
+    print("    i1     final generation (included)")
+    exit(0)
+
+#####################################################################################
+##            ##            ##        check_string      ##            ##           ##
+#####################################################################################
+
+def     check_string(string):
+    i = 0
+    while (i < len(string)):
+        if (string[i] < '.' and string[i] > '/'
+            and string[i] < '0' or string[i] > '9'):
+            print("Invalid argument")
+            exit(84)
+        i = i + 1
+
+#####################################################################################
+##            ##            ##       première_partie         ##            ##           ##
+#####################################################################################
+
+def     première_partie(n, k):
+    i = 1
+    print(str(str(i) + " " + str(round(n, 2)) + "0"))
+    while (i < 100):
+        n = k * n * ((1000 - n) / 1000)
+        if (n < 0):
+            n = 0
+        i = i + 1
+        if (float(str("%.1f" % (n))) == round(n, 2)):
+            print(str(str(i) + " " + str(round(n, 2)) + "0"))
+        else:
+            print(str(str(i) + " " + str(round(n, 2))))
+
+#####################################################################################
+##            ##            ##       seconde_partie        ##            ##           ##
+#####################################################################################
+
+def     seconde_partie(n, i0, i1):
+
+    k = float(1)
+
+    tmp = n
+    while (k < 4):
+        i = 1
+        n = float(tmp)
+        while (i < i0):
+            n = k * n * ((1000 - n) / 1000)
+            if (n < 0):
+                n = 0
+            i = i + 1
+
+        while (i <= i1):
+            if (float(str("%.1f" % (n))) == round(n, 2)):
+                print(str("%.2f" % k + " " + str(round(n, 2)) + "0"))
+            else:
+                print(str("%.2f" % k + " " + str(round(n, 2))))
+            n = k * n * ((1000 - n) / 1000)
+            if (n < 0):
+                n = 0
+            i = i + 1
+
+        k = k + 0.01
+
+#####################################################################################
+##            ##            ##          MAIN            ##            ##           ##
+#####################################################################################
+
+
+if (len(argv) == 2 or len(argv) == 3 or len(argv) == 4):
+
+    i = 0
+    d = 1
+    num_arg = len(argv)
+
+    if (argv[1] == "-h"):
+        man_help()
+        exit(0)
+    elif (num_arg == 2):
+        print("Invalid number of argument")
+        exit(84)
+
+    while (d < num_arg):
+        check_string(argv[d])
+        d = d + 1
+
+    if (float(argv[1]) < 0):
+        print("n cannot be negative")
+        exit(84)
+    if (num_arg == 3):
+        n = float(argv[1])
+        if (float(argv[2]) < 1 or float(argv[2]) > 4):
+            exit(84)
+        k = float(argv[2])
+        première_partie(n, k)
+
+    elif (num_arg == 4):
+        n = float(argv[1])
+        try:
+            i0 = int(argv[2])
+            i1 = int(argv[3])
+        except ValueError:
+            print("Error\n")            
+            exit(84)
+        if (i0 >= i1):
+            exit(84)
+        seconde_partie(n, i0, i1)
+
+else:
+    print("Invalid number of argument")
+    exit(84)
