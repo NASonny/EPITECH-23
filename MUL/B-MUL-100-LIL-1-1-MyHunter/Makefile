@@ -19,7 +19,7 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	= my_hunter
 
-CFLAGS = -lcsfml-window -lcsfml-graphics -lcsfml-system -Iinclude -lcsfml-audio
+CFLAGS =  I/usr/include -L/usr/lib64 -lcsfml-window -lcsfml-graphics -lcsfml-system -Iinclude -lcsfml-audio
 CPFLAGS += -Wall -Wextra
 
 all:	$(NAME)
