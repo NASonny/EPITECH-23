@@ -9,7 +9,7 @@
 
 import sys
 import math 
-   
+
 def translation(i, j, x, y) :
     
     print("Translation along vector (", int(i), ", ", int(j), ")", sep = "")
