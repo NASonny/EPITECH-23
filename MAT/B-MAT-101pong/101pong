@@ -5,10 +5,15 @@
 ## File description:
 ## Math Project
 ##
+
 import math
 import sys
 from math import *
 from sys import *
+
+#####################################################################################
+##            ##            ##        MAN HELP      ##            ##               ##
+#####################################################################################
 
 def usage():
   print(
@@ -21,16 +26,25 @@ def usage():
       "  x1 ball abscissa at time t\n"
       "  y1 ball ordinate at time t\n"
       "  z1 ball altitude at time t\n"
-      "  n  time shift (greater than or equal to zero, integer)\n")
+      "  n  time shift (greater than or equal to zero, integer)")
   sys.exit(0)
+  
+def numb_arg(args):
+    for arg in args:
+      if not arg.isdigit() and not (arg.startswith('-') and arg[1:].isdigit()):
+        return False
+    return True
 
-if (sys.argv[1] == "-h"):
-  usage()
-
-
-if (len(sys.argv) != 8):
-  print("Error, put 7 not 8 argument maximum or minimum")
-  sys.exit(84)
+try:
+    if len(sys.argv) == 2 and sys.argv[1] == "-h":
+        usage()
+    elif len(sys.argv) != 8:
+        raise ValueError("Error, put 7 not 8 arguments maximum or minimum")
+    elif not numb_arg(sys.argv[1:]):
+        raise ValueError("Error, all arguments must be numbers")
+except ValueError as e:
+    print(e)
+    sys.exit(84)
 
 x0 = float(sys.argv[1])
 y0 = float(sys.argv[2])
@@ -41,7 +55,12 @@ y1 = float(sys.argv[5])
 z1 = float(sys.argv[6])
 
 d = 16
-n = int(sys.argv[7])
+
+try:
+  n = int(sys.argv[7])
+except ValueError:
+  print("n(time shift) is not an int, Please put n >= 0.")
+  sys.exit(84)
 
 velocity_x = x1 - x0
 velocity_y = y1 - y0
@@ -60,16 +79,16 @@ if (n < 0):
   sys.exit(84)
 
 if incidence == 0:
-  angle = 0
+  angle = 0.00
 else:
   angle = abs(90 - math.degrees(math.acos(velocity_z / incidence)))
 
 print("The velocity vector of the ball is:")
 print("(%.2f, %.2f, %.2f)" % (velocity_x, velocity_y, velocity_z))
-print("At time t +", n, "ball cordinates will be:")
+print(f"At time t + {n}, ball cordinates will be:")
 print("(%.2f, %.2f, %.2f)" % (cord_x, cord_y, cord_z))
 if (z1 >= 0 and velocity_z < 0) or (z1 < 0 and velocity_z >= 0):
   print("The incidence angle is:")
   print("%.2f" % angle, "degrees")
 else:
-  print("The ball won’t reach the paddle.")
+  print("The ball won't reach the paddle.")
