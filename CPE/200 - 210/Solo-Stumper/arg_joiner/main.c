@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** - - -- - - - --- - ---
 ** File description:
-** SOLO STUMPER 6
+** SOLO STUMPER 6 | arg_joiner
 */
 
 #include "include/my.h"

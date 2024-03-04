@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** FazzBizz
 ** File description:
-** SOLO STUMPER 10
+** SOLO STUMPER 10 | raison de pourquoi j'ai arreté ^^
 */
 
 #include "include/my.h"

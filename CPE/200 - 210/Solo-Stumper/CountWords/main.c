@@ -23,9 +23,9 @@ int main (int argc, char **argv, const char *str)
     while (c != '\0'){
         c++;
         if ( c == '\n'){
-            printf('\n');
+            printf("\n");
             c++;
         }
     }
-    printf("%s\n", c);
+    printf("%d\n", c);
 }

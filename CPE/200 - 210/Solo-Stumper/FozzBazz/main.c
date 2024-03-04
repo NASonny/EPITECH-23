@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** FOZZBAZZ
 ** File description:
-** SOLO STUMPER3
+** SOLO STUMPER3 | j'suis une fraude mdrr faite jamais ça utilsié %
 */
 
 #include "include/my.h"
