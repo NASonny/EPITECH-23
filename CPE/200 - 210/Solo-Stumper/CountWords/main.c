@@ -8,24 +8,26 @@
 #include "include/applications.h"
 #include <stddef.h>
 #include <stdio.h>
+#include <string.h>
 
-int main (int argc, char **argv, const char *str)
-{
-    char c = argv[1];
-    
-    if (argv[1] == NULL){
-        my_putchar('\n');
-        return 0;
-    }
-    if (argc > 2)
+// String x : " ", on va chercher chaque mot dans la string, 
+// Qu'est ce qu'un mot ? :  x lettre suivie d'un espace  
+// Donc on peut check si pour chaque lettre si il correspond à un espace on rajoute ++ à une variable
+
+int main(int argc, char **argv, const char *str ) {
+    if (argc != 2) {
+        printf("Usage: %s <string>\n", argv[0]);
         return 84;
-
-    while (c != '\0'){
-        c++;
-        if ( c == '\n'){
-            printf("\n");
-            c++;
+    }
+    str = argv[1];
+    int nbMot = 0;
+    for (int i = 0, len = strlen(str); i < len; i++) {
+        // Si c'est le premier caractère ou un caractère suivant un espace et qu'il n'est pas un espace lui-même,
+        // alors c'est le début d'un nouveau mot.
+        if ((i == 0 || str[i-1] == ' ') && str[i] != ' ') {
+            nbMot++;
         }
     }
-    printf("%d\n", c);
+    printf("%i\n", nbMot);
+    return 0;
 }
