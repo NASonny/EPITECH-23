@@ -34,7 +34,7 @@ GitHub Actions , Express.js , Docker.
 | CPE - BSQ |‎ [Here](https://github.com/NASonny/EPITECH-23/tree/main/CPE/100%20-%20110/B-CPE-110-LIL-1-1-BSQ)‎| **8.6%** ❌ |
 | CPE - Pushswap |‎ [Here](https://github.com/NASonny/EPITECH-23/tree/main/CPE/100%20-%20110/B-CPE-110-LIL-1-1-Pushswap)‎| **100%** ✅ |
 | CPE - Antman |‎ [Here](https://github.com/NASonny/EPITECH-23/tree/main/CPE/100%20-%20110/B-CPE-110-LIL-1-1-Antman)‎| **Build error** ❌ |
-| CPE - Solo Stumper |‎ [Here](https://github.com/NASonny/EPITECH-23/tree/main/CPE/200%20-%20210/Solo-Stumper)‎| **Loading....** |
+| CPE - Solo Stumper |‎ [Here](https://github.com/NASonny/EPITECH-23/tree/main/CPE/200%20-%20210/Solo-Stumper)‎| **Failed** ❌ |
 | CPE - Lemin |‎ [Here](https://github.com/NASonny/EPITECH-23/tree/main/CPE/200%20-%20210/B-CPE-200-LIL-2-1-Lemin)‎| **23.7%** ❌ |
 | CPE - Dante |‎ [Here](https://github.com/NASonny/EPITECH-23/tree/main/CPE/200%20-%20210/B-CPE-200-LIL-2-1-Dante)‎| **Build error** ❌ |
 | CPE - CoreWar |‎ [Here](https://github.com/NASonny/EPITECH-23/tree/main/CPE/200%20-%20210/B-CPE-200-LIL-2-1-CoreWar)‎| **Not Done** ❌ |
