@@ -7,7 +7,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void my_putchar(char c);
+void my_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
 
 void print_little_star(unsigned size)
 {

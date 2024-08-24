@@ -25,6 +25,7 @@ void print_pic(int rows, int i)
             my_putchar(' ');
         }
         my_putchar('\n');
+
 }
 
 void print_horizontal(unsigned int size)
